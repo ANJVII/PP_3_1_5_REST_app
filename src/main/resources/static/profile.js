@@ -1,5 +1,5 @@
-async function profile(id) {
-    const users = await fetch(`http://localhost:8080/profile-${id}`);
+async function profile() {
+    const users = await fetch(`http://localhost:8080/user/profile`);
     const oneUser = await users.json();
 
     console.log(oneUser);
@@ -8,17 +8,17 @@ async function profile(id) {
 
 window.addEventListener('DOMContentLoaded', profile);
 
-function showUserHTML({id, name, surname, department, salary,phone, email, role}) {
+function showUserHTML({id, name, lastName, department, salary,phoneNumber, email, role}) {
     const tbody = document.getElementById('oneUser');
     const topHeader = document.getElementById('topHeader');
 
     tbody.insertAdjacentHTML('beforeend', `<tr>
         <td>${id}</td>
         <td>${name}</td>
-        <td>${surname}</td>
+        <td>${lastName}</td>
         <td>${department}</td>
         <td>${salary}</td>
-        <td>${phone}</td>
+        <td>${phoneNumber}</td>
         <td>${email}</td>
         <td>${role}</td>
         <td style="text-align: center">`);

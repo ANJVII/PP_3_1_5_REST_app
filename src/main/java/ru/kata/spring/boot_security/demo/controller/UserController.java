@@ -1,12 +1,9 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
@@ -21,30 +18,9 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("/profile")
-//    public String get(Principal principal, Model model) {
-//        User user = userService.findByEmail(principal.getName());
-//        model.addAttribute("profile", user);
-//        return "profile";
-//    }
-
-    @GetMapping("/profile-{id}")
-    public User getUser(@PathVariable Long id, Principal principal) {
-//        User user = userService.findByEmail(principal.getName());
-        User user = userService.getUserById(id);
-        return user;
-    }
-
-    // Login form
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    // Login form with error
-    @RequestMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "login";
+    @GetMapping("/user/profile")
+    public ResponseEntity<User> getUser(Principal principal) {
+        User user = userService.getUserById(userService.findByEmail(principal.getName()).getId());
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
