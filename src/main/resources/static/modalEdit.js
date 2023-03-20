@@ -32,7 +32,6 @@ exampleModal.addEventListener('show.bs.modal', async function (event) {
 
     const roles = await fetch('http://localhost:8080/admin/roles');
     const rolesJson = await roles.json();
-    console.log(rolesJson);
     if(booleanEditRoles) {
         rolesJson.forEach(role => {
             let element = document.createElement("option");
@@ -106,8 +105,7 @@ editUser.addEventListener('submit', async (e) => {
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
                  data-bs-whatever="${id}" data-name="${name}" data-lastName="${lastName}" data-department="${department}"
                   data-salary="${salary}" data-phoneNumber="${phoneNumber}" data-email="${email}" data-password="${password}"
-                   data-roles="${role}"> Edit
-                </button>
+                   data-roles="${role}"> Edit </button>
                 
                 <td style="text-align: center">
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"

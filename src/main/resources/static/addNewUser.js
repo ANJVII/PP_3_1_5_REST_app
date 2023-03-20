@@ -75,7 +75,7 @@ addUserForm.addEventListener('submit', async (e) => {
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
                  data-bs-whatever="${id}" data-name="${name}" data-lastName="${lastName}" data-department="${department}"
                   data-salary="${salary}" data-phoneNumber="${phoneNumber}" data-email="${email}" data-password="${password}"
-                   data-roles="${role}">
+                   data-roles="${role}"> Edit
                 </button>
                 
                 <td style="text-align: center">
